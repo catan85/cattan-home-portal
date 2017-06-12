@@ -79,6 +79,9 @@ export class Server {
     //mount override?
     this.app.use(methodOverride());
 
+
+
+    /*s
     // catch 404 and forward to error handler
     this.app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
         err.status = 404;
@@ -86,7 +89,8 @@ export class Server {
     });
 
     //error handling
-    this.app.use(errorHandler());
+    this.app.use(errorHandler());*/
+
   }
 
   /**
@@ -115,6 +119,15 @@ export class Server {
     this.app.use("/test", TestPageRoute)
     //IndexRoute creation
     //IndexRoute.create(router);
+
+    // catch 404 and forward to error handler
+    this.app.use(function (req, res, next) {
+        let options: Object = {
+          "message": "Index page works (but was redirected from a 404)",
+          "title" : "Home | Cattan's automation"
+        };
+        return res.render('index',options);
+    });
 
     //use router middleware
     this.app.use(router);
