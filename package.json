@@ -1,9 +1,9 @@
 {
-  "name": "heros",
-  "description": "The tour of heros",
+  "name": "cattan-home-portal",
+  "description": "Cattan's home automation portal",
   "version": "1.0.0",
   "private": true,
-  "author": "Brian Love",
+  "author": "Andrea Cattaneo",
   "scripts": {
     "dev": "SET NODE_ENV=development && nodemon ./bin/www",
     "grunt": "grunt",

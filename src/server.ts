@@ -7,6 +7,8 @@ import errorHandler = require("errorhandler");
 import methodOverride = require("method-override");
 
 import { IndexRoute } from "./routes/index";
+import { TestPageRoute } from "./routes/testPage";
+import { TestApiRoute } from "./routes/testApi";
 
 /**
  * The server.
@@ -111,7 +113,13 @@ export class Server {
     let router: express.Router;
     router = express.Router();
 
-    //IndexRoute
+    //Test Api creation
+    TestApiRoute.create(router);
+
+    //TestRoute creation
+    TestPageRoute.create(router);
+
+    //IndexRoute creation
     IndexRoute.create(router);
 
     //use router middleware

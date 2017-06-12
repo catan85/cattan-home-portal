@@ -3,33 +3,33 @@ import { BaseRoute } from "./route";
 
 
 /**
- * / route della pagina index
+ * / route di test, esempio di una pagina statica
  *
  * @class User
  */
-export class IndexRoute extends BaseRoute {
+export class TestPageRoute extends BaseRoute {
 
   /**
    * Create the routes.
    *
-   * @class IndexRoute
+   * @class TestPageRoute
    * @method create
    * @static
    */
   public static create(router: Router) {
     //log
-    console.log("[IndexRoute::create] Creating index route.");
+    console.log("[TestRoute::create] Creating test route.");
 
-    //add home page route
-    router.get("/", (req: Request, res: Response, next: NextFunction) => {
-      new IndexRoute().index(req, res, next);
+    //add test route
+    router.get("/test", (req: Request, res: Response, next: NextFunction) => {
+      new TestPageRoute().testPage(req, res, next);
     });
   }
 
   /**
    * Constructor
    *
-   * @class IndexRoute
+   * @class TestPageRoute
    * @constructor
    */
   constructor() {
@@ -39,22 +39,22 @@ export class IndexRoute extends BaseRoute {
   /**
    * The home page route.
    *
-   * @class IndexRoute
+   * @class TestRoute
    * @method index
    * @param req {Request} The express Request object.
    * @param res {Response} The express Response object.
    * @next {NextFunction} Execute the next method.
    */
-  public index(req: Request, res: Response, next: NextFunction) {
+  public testPage(req: Request, res: Response, next: NextFunction) {
     //set custom title
-    this.title = "Home | Cattan's automation";
+    this.title = "Test page | Cattan's automation";
 
     //set message
     let options: Object = {
-      "message": "Welcome to the Cattan's automation application. Have fun!"
+      "message": "This is just a test page"
     };
 
     //render template
-    this.render(req, res, "index", options);
+    this.render(req, res, "test", options);
   }
 }
