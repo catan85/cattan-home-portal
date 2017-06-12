@@ -7,8 +7,8 @@ import errorHandler = require("errorhandler");
 import methodOverride = require("method-override");
 
 import { IndexRoute } from "./routes/index";
-import { TestPageRoute } from "./routes/testPage";
 import { TestApiRoute } from "./routes/testApi";
+import { TestPageRoute } from "./routes/testPage";
 
 /**
  * The server.
@@ -46,19 +46,6 @@ export class Server {
 
     //add routes
     this.routes();
-
-    //add api
-    this.api();
-  }
-
-  /**
-   * Create REST API routes
-   *
-   * @class Server
-   * @method api
-   */
-  public api() {
-    //empty for now
   }
 
   /**
@@ -113,14 +100,21 @@ export class Server {
     let router: express.Router;
     router = express.Router();
 
+    
+    // modo 1
+    // IndexRoute.create(router);
+    // modo 2
+    this.app.use("/", IndexRoute);
+    
     //Test Api creation
-    TestApiRoute.create(router);
+    //TestApiRoute.create(router);
+    this.app.use("/api", TestApiRoute)
 
     //TestRoute creation
-    TestPageRoute.create(router);
-
+    //TestPageRoute.create(router);
+    this.app.use("/test", TestPageRoute)
     //IndexRoute creation
-    IndexRoute.create(router);
+    //IndexRoute.create(router);
 
     //use router middleware
     this.app.use(router);
